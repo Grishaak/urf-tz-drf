@@ -164,3 +164,5 @@ class FoodListSerializer(serializers.ModelSerializer):
         model = FoodCategory
         fields = ('id', 'name_ru', 'name_en', 'name_ch', 'order_id', 'foods')
 ```
+
+*Итог: был написан View для app "dishes". В котором queryset для FoodCategories фильтрует запросы к базе данных через prefetch_related и через него внутри фильтруется уже запрос к моделям Food по аттрибуту is_publish.*
