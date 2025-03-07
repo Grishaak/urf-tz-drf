@@ -166,3 +166,4 @@ class FoodListSerializer(serializers.ModelSerializer):
 ```
 
 *Итог: был написан View для app "dishes". В котором queryset для FoodCategories фильтрует запросы к базе данных через prefetch_related и через него внутри фильтруется уже запрос к моделям Food по аттрибуту is_publish.*
+ПРимечание: логин: admin-utf пароль от админки: qwerty, 
