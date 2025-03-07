@@ -9,7 +9,7 @@ from dishes.serializers import FoodSerializer, FoodListSerializer
 
 
 class FoodApiRetrieveView(ListCreateAPIView):
-    queryset = Food.objects.filter(is_publish=False)
+    queryset = Food.objects.filter(is_publish=True)
     serializer_class = FoodSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
