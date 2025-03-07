@@ -9,7 +9,7 @@ class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
         fields = ('internal_code', 'code', 'name_ru', 'description_ru', 'description_en',
-                  'description_ch', 'is_vegan', 'is_special', 'cost', 'additional')
+                  'description_ch', 'is_vegan', 'is_special', 'cost', 'additional', 'is_publish')
 
 
 class FoodListSerializer(serializers.ModelSerializer):

@@ -16,6 +16,7 @@ class FoodApiRetrieveView(ListCreateAPIView):
 
 class FoodCategoryViewList(ListCreateAPIView):
     serializer_class = FoodListSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     # Фильтруем все входящие блюда is_publish
     def get_queryset(self):
@@ -28,4 +29,17 @@ class FoodCategoryViewList(ListCreateAPIView):
         ).filter(
             food__is_publish=True
         ).distinct()
+        return queryset
+
+
+class FoodAllCategoryViewList(ListCreateAPIView):
+    serializer_class = FoodListSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
+        queryset = FoodCategory.objects.prefetch_related(
+            Prefetch(
+                'food', queryset=Food.objects.all(), to_attr='filtered_foods'
+            )
+        ).all()
         return queryset
